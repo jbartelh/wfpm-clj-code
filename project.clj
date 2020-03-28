@@ -6,7 +6,8 @@
             :url "https://opensource.org/licenses/MIT"
             :key "mit"
             :year 2020}
-  :dependencies [[org.clojure/clojure "1.10.0"]]
+  :dependencies [[org.clojure/clojure "1.10.0"]
+                 [org.clojure/math.numeric-tower "0.0.4"]]
   :main ^:skip-aot wfpm-clj-code.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
