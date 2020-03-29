@@ -1,6 +1,6 @@
 # 'Why Functional Programming Matters' in clojure
 
-['Why Functional Programming Matters' by John Hughes](https://www.google.com)
+['Why Functional Programming Matters' by John Hughes](https://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf)
 
 After a quick time reading the paper, i opened up a clojure REPL and tried out the things described in the paper.
 The dynamic of the REPL makes it really easy to play around and try out a lot of things
