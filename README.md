@@ -8,10 +8,19 @@ The dynamic of the REPL makes it really easy to play around and try out a lot of
 This helped me a lot to understand the described concepts and ideas.
 It's also really nice how close the clojure syntax is to the definitions in the paper.
 
-# Content
-
-The pseudo code/math defintions in the paper, just translated into clojure.
+This repository contains pseudo code/math definitions from the paper as _Clojure_ code.
 Combined with a REPL this is kind like an interactive add-on to the paper.
+
+## Content
+
+ _3 Gluing Functions Together_
+ - src/wfpm_clj_code/glue/higher_order_fn
+   - lists.clj
+   - trees.clj
+   
+ _4 Gluing Programs Together_
+ - src/wfpm_clj_code/glue/lazy_evaluation
+   - lazy_seq
 
 ## How to run
 
