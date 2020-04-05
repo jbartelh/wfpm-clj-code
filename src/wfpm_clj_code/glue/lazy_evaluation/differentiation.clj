@@ -1,4 +1,4 @@
-(ns wfpm-clj-code.glue.lazy-evaluation.lazy-seq
+(ns wfpm-clj-code.glue.lazy-evaluation.differentiation
   (:require [clojure.math.numeric-tower :refer [abs expt round]]))
 
 ;; next nx = (x + n/x)/2
@@ -102,9 +102,7 @@
 ;; round(log2 ((a−c)/(b−c)−1))
 ;; returns a single val
 (defn order [[a b c & rest]]
-  (do
-    (println "a: " a  " b:" b " c:"  c " a-c: " (- a c) " b-c: " (- b c))
-    (round (log2 (-(/ (- a c) (- b c)) 1)))))
+  (round (log2 (-(/ (- a c) (- b c)) 1))))
 
 ;; returns a lazy-seq
 (defn improve [s]
@@ -116,21 +114,15 @@
       x 1]
   (within eps (improve (differentiate h0 fx x))))
 
-(let [fx #(+ (* 3 % %) 5)
+#_(let [fx #(+ (* 3 % %) 5)
       eps 0.001
       h0 5000
       x 1.0054]
   (within eps (improve (improve (differentiate h0 fx x)))))
-;; => causes an ArithmeticException, Divide by zero in 'order'
-;;  the results of the first improve are already so good (the right result) that there is not much to optimize
+;; => causes an ArithmeticException, Divide by zero in the 'order' function.
+;;  The results of the first 'improve' are already so good (the right result) that there is not much to optimize
 ;;  actually the first element in the lazy-seq is already the result
 ;;  where the error isn't big enough for a 2nd improvements, maybe different start arguments could help
-
-
-;; takeaway: it was possible to divide the newton-raphson square root algorithm in smaller peaces.
-;;           These peaces/modules can not only changed independently, they're also synchronised due to the laziness.
-;;           the relative/within part pulls new values out of the lazy sequence.
-;;           The calculation of these new values is triggered on demand.
 
 
 
